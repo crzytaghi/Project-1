@@ -1,0 +1,21 @@
+* {
+  border: 1px solid gold;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+}
+
+.categories {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
