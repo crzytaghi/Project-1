@@ -2,6 +2,15 @@
   border: 1px solid gold;
 } */
 
+body {
+  position: relative;
+}
+
+.container {
+  position: absolute;
+  width: 100%;
+}
+
 .header {
   display: flex;
   flex-direction: column;
@@ -9,10 +18,35 @@
   align-items: center;
 }
 
-form {
+button {
   display: flex;
   justify-content: center;
   margin: 10px auto;
+}
+
+#modal {
+	background-color: rgba(0,0,0,0.4);
+  display: none;
+	position: absolute;
+	/* top: 0;
+	left: 0; */
+	height: 100px;
+	width: 100px;
+	z-index: 1;
+	/*This puts our modal in front of the body (which has a default z-index setting of `0`*/
+	overflow: auto;
+	/*If overflow is clipped, a scroll-bar should be added to see the rest of the content*/
+}
+
+/* #modal-textbox {
+	background-color: white;
+	height: 350px;
+	width: 550px;
+	border-radius: 2px;
+} */
+
+.question {
+  border: 1px solid grey;
 }
 
 .categories {
@@ -21,16 +55,23 @@ form {
   flex-wrap: wrap;
   width: 80%;
   align-items: center;
-  margin: auto;
+  margin-left: 10%;
   border: 5px solid blue;
   border-radius: 5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.options {
+  text-align: center;
 }
 
 img {
   width: 300px;
   height: 300px;
   border-radius: 20px;
-  margin: 20px;
   border: 1px solid red;
   cursor: pointer;
 }
