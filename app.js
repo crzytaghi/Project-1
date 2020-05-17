@@ -57,7 +57,8 @@ $(() => {
     console.log($category);
 
     $.ajax({
-      url: `https://opentdb.com/api.php?amount=10&type=boolean&category=${$category}`
+      url: `https://opentdb.com/api.php?amount=10&type=boolean&category=${$category}`,
+      type: 'GET'
     }).then(
       (data) => {
         console.log(data);
@@ -75,8 +76,9 @@ $(() => {
             // const $question = $('<h3>').text(`True or False No. ${i+=1}`).appendTo($div)
             const $h3 = $('<h3>').text(`Category: ${data.results[i].category}`).appendTo($div)
             const $h4 = $('<h4>').text(`Difficulty: ${data.results[i].difficulty}`).appendTo($div)
+            // attempting to replace &quot; with ""
             const $h2 = $('<h2>').text(`True or False: ${data.results[i].question}`).appendTo($div)
-            const $ul = $('<ul>').appendTo($div)
+            // const $ul = $('<ul>').appendTo($div)
             // const $li = $('<li>').text(data.results[i].incorrect_answers).appendTo($ul);
             const $answer = $('<button>').text('Click to show answer').appendTo($div)
             $answer.on('click', (event) => {
@@ -91,7 +93,8 @@ $(() => {
           window.location.reload();
         }
 
-        $openBtn.on('click', openModal);
+        openModal();
+        // $openBtn.on('click', openModal);
         $closeBtn.on('click', closeModal);
       },
       (error) => {
