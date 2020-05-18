@@ -6,6 +6,14 @@
   background-color: ;
 }
 
+.header {
+  font-family: sans-serif;
+}
+
+.header p {
+  margin: 0 auto;
+}
+
 .container {
   position: absolute;
   width: 100%;
