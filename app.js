@@ -84,8 +84,8 @@ $(() => {
             const $h2 = $('<h2>').text(`True or False: ${data.results[i].question}`).appendTo($div)
 
             const $ul = $('<ul>').appendTo($div)
-            const $incorrectAnswer = $('<p>').text(data.results[i].incorrect_answers).addClass(`answer${i}`).appendTo($div);
-            const $correctAnswer = $('<p>').text(data.results[i].correct_answer).addClass(`answer${i}`).appendTo($div);
+            const $incorrectAnswer = $('<button>').text(data.results[i].incorrect_answers).addClass(`answer${i}`).appendTo($div);
+            const $correctAnswer = $('<button>').text(data.results[i].correct_answer).addClass(`answer${i}`).appendTo($div);
             const $checkAnswer = $(`.answer${i}`)
 
 
@@ -93,9 +93,9 @@ $(() => {
             $checkAnswer.on('click', (event) => {
 
               if ($win + $lose === 9 && $win > $lose) {
-                alert(`Great Job! You're not a complete idiot!`)
+                alert(`Great Job! You got ${$win} correct and ${$lose} wrong, you're not a complete idiot!`)
               } else if ($win + $lose === 9 && $lose > $win) {
-                alert('Boy Bye! You Trash!')
+                alert(`Boy Bye! You got ${$win} correct and ${$lose} wrong, You Trash!`)
               }
 
 
@@ -111,7 +111,7 @@ $(() => {
               }
             })
 
-            const $showAnswer = $('<button>').text('Click to show answer').appendTo($div)
+            const $showAnswer = $('<h3>').text('Click to show answer').appendTo($div)
             $showAnswer.on('click', (event) => {
               $(event.currentTarget).text(data.results[i].correct_answer).appendTo($div).off();
             })
