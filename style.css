@@ -43,11 +43,6 @@ button {
 
 }
 
-.question {
-  border: 1px solid grey;
-  text-align: center;
-}
-
 .categories {
   display: flex;
   justify-content: space-around;
@@ -68,13 +63,15 @@ button {
 }
 
 .question {
+  border: 1px solid grey;
+  text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
   align-content: center;
   flex-direction: column;
-  padding: 5px;
-  overflow: auto;
+  padding: 10px;
+  /* overflow: auto; */
   margin: 0 auto;
   background-color: white;
   width: 80%;

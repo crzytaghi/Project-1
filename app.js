@@ -67,16 +67,8 @@ $(() => {
         const $modal = $('.modal');
         const $closeBtn = $('#close');
 
-        const $win = $('<div>')
-          .text('Correct Answer!')
-          .addClass(`answerCheck`)
-          .css('display', 'none')
-          .appendTo('body')
-        const $lose = $('<div>')
-            .text('Incorrect!')
-            .addClass(`answerCheck`)
-            .css('display', 'none')
-            .appendTo('body')
+        let $win = 0;
+        let $lose = 0;
 
             // FUNCTION DISPLAYS ALL OF THE QUESTIONS AND ANSWER CHOICES.
         const openModal = () => {
@@ -98,19 +90,26 @@ $(() => {
 
 
             // ALLOWS THE USER TO CLICK ON THE ANSWER AND DISPLAYS A MODAL STATING SO
-            // $checkAnswer.on('click', (event) => {
-            //
-            //
-            //   if ($(event.target).text() === $incorrectAnswer.text()) {
-            //     console.log('Fail');
-            //
-            //     $lose.css('display', 'block').show().delay(3000).hide();
-            //
-            //   } else  {
-            //     console.log('Success');
-            //     $win.css('display', 'block');
-            //   }
-            // })
+            $checkAnswer.on('click', (event) => {
+
+              if ($win + $lose === 9 && $win > $lose) {
+                alert(`Great Job! You're not a complete idiot!`)
+              } else if ($win + $lose === 9 && $lose > $win) {
+                alert('Boy Bye! You Trash!')
+              }
+
+
+              if ($(event.target).text() === $incorrectAnswer.text()) {
+                console.log('Fail');
+                $lose++
+                console.log($lose);
+
+              } else  {
+                console.log('Success');
+                $win++
+                console.log($win);
+              }
+            })
 
             const $showAnswer = $('<button>').text('Click to show answer').appendTo($div)
             $showAnswer.on('click', (event) => {
