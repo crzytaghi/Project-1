@@ -15,6 +15,9 @@ $(() => {
         const $modal = $('.modal');
         const $closeBtn = $('#close');
 
+        let $win = 0;
+        let $lose = 0;
+
         const openModal = () => {
           $modal.css('display', 'block');
           $('body').css('background-color', "rgb(0,0,0,0.8)");
@@ -26,9 +29,34 @@ $(() => {
             const $h4 = $('<h4>').text(`Difficulty: ${data.results[i].difficulty}`).appendTo($div)
             const $h2 = $('<h2>').text(`True or False: ${data.results[i].question}`).appendTo($div)
             const $ul = $('<ul>').appendTo($div)
-            // const $li = $('<li>').text(data.results[i].incorrect_answers).appendTo($ul);
-            const $answer = $('<button>').text('Click to show answer').appendTo($div)
-            $answer.on('click', (event) => {
+            const $incorrectAnswer = $('<button>').text(data.results[i].incorrect_answers).addClass(`answer${i}`).appendTo($div);
+            const $correctAnswer = $('<button>').text(data.results[i].correct_answer).addClass(`answer${i}`).appendTo($div);
+            const $checkAnswer = $(`.answer${i}`)
+
+            // ALLOWS THE USER TO CLICK ON THE ANSWER AND DISPLAYS A MODAL STATING SO
+            $checkAnswer.on('click', (event) => {
+
+              if ($win + $lose === 9 && $win > $lose) {
+                alert(`Great Job! You got ${$win} correct and ${$lose} wrong, you're not a complete idiot!`)
+              } else if ($win + $lose === 9 && $lose > $win) {
+                alert(`Boy Bye! You got ${$win} correct and ${$lose} wrong, You Trash!`)
+              }
+
+
+              if ($(event.target).text() === $incorrectAnswer.text()) {
+                console.log('Fail');
+                $lose++
+                console.log($lose);
+
+              } else  {
+                console.log('Success');
+                $win++
+                console.log($win);
+              }
+            })
+
+            const $showAnswer = $('<h3>').text('Click here to show answer').appendTo($div)
+            $showAnswer.on('click', (event) => {
               $(event.currentTarget).text(data.results[i].correct_answer).appendTo($div).off();
             })
 
@@ -36,8 +64,8 @@ $(() => {
         }
 
         const closeModal = (event) => {
-          $modal.css('display', 'none');
-          $('body').css('background-color', 'white');
+          // $modal.css('display', 'none');
+          // $('body').css('background-color', 'white');
           window.location.reload();
         }
 
@@ -111,7 +139,7 @@ $(() => {
               }
             })
 
-            const $showAnswer = $('<h3>').text('Click to show answer').appendTo($div)
+            const $showAnswer = $('<h3>').text('Click here to show answer').appendTo($div)
             $showAnswer.on('click', (event) => {
               $(event.currentTarget).text(data.results[i].correct_answer).appendTo($div).off();
             })
@@ -120,13 +148,12 @@ $(() => {
 
         // ADDS A CLOSE BUTTON TO THE MODAL TO ALLOW THE USER TO CLOSE OUT THE MODAL AND SELECT A NEW CATEGORY. ALSO REFERESHES THE PAGE SO THAT THE USER CAN SELECT THE SAME CATEGORY BUT IT WILL DISPLAY A NEW SET OF QUESTIONS.
         const closeModal = (event) => {
-          // $modal.css('display', 'none');
-          // $('body').css('background-color', 'white');
+
           window.location.reload();
         }
         // RUNS THE FUNCTION THAT DISPLAYS ALL OF THE QUESTIONS IN A MODAL
         openModal();
-        // $openBtn.on('click', openModal);
+
         $closeBtn.on('click', closeModal);
       },
       (error) => {
