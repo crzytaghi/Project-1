@@ -16,7 +16,7 @@ My initial approach was to create a trivia game that would simply display a set 
 
 **LINK TO LIVE SITE**
 
-[Quarantine Trivia](crzytaghi.github.io)
+[Quarantine Trivia](https://crzytaghi.github.io/)
 
 **Issues/Problems/Errors**
 
