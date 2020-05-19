@@ -55,7 +55,7 @@ $(() => {
               }
             })
 
-            const $showAnswer = $('<h3>').text('Click here to show answer').appendTo($div)
+            const $showAnswer = $('<button>').text('Show Answer').css('background-color','black').css('color','white').appendTo($div)
             $showAnswer.on('click', (event) => {
               $(event.currentTarget).text(data.results[i].correct_answer).appendTo($div).off();
             })
@@ -139,7 +139,7 @@ $(() => {
               }
             })
 
-            const $showAnswer = $('<h3>').text('Click here to show answer').appendTo($div)
+            const $showAnswer = $('<button>').text('Show Answer').css('background-color', 'black').css('color', 'white').appendTo($div)
             $showAnswer.on('click', (event) => {
               $(event.currentTarget).text(data.results[i].correct_answer).appendTo($div).off();
             })
