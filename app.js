@@ -9,7 +9,6 @@ $(() => {
       url: 'https://opentdb.com/api.php?amount=10&type=boolean'
     }).then(
       (data) => {
-        // console.log(data.results);
 
         const $openBtn = $('#openModal');
         const $modal = $('.modal');
@@ -103,7 +102,7 @@ $(() => {
           $modal.css('display', 'block');
           $('body').css('background-color', "rgb(0,0,0,0.8)");
           $('a').css('color', 'white');
-          for (let i=0; i<data.results.length; i++) {
+          for (let i = 0; i<data.results.length; i++) {
             const $div = $('<div>').addClass(`question`).appendTo('.modal')
             // const $question = $('<h3>').text(`True or False No. ${i+=1}`).appendTo($div)
             // const $h3 = $('<h3>').text(`Category: ${data.results[i].category}`).appendTo($div)
